@@ -76,9 +76,9 @@ class ViewController: UIViewController {
       //(bindTo)イベントのプロパティ接続をする ※bindToの引数内に表示対象のUIパーツを設定
       //(DisposeBag)観測状態からの解放を行う
       buttonsEnabledObservable.bind(to: button.rx.isEnabled).disposed(by: disposeBag)
-      
       //メンバ変数：lastSelectedGreetingにボタンのタイトル名を引き渡す
       //(subscribe)イベントが発生した場合にイベントのステータスに応じての処理を行う
+      //onNextは「値が更新された」というイベント
       button.rx.tap.subscribe(onNext: { (nothing: Void) in
         self.lastSelectedGreeting.value = button.currentTitle!
       }).disposed(by: disposeBag)
